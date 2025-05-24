@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6346ED9-3F95-47BF-A572-C0A228B7B735}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CapaPresentacion</RootNamespace>
+    <AssemblyName>CapaPresentacion</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBTrivagoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet12.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet13.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet14.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet14.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet15.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet15.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet16.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet16.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBTrivagoDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBTrivagoDataSet9.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FBusquedaDepartamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaDepartamento.Designer.cs">
+      <DependentUpon>FBusquedaDepartamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBusquedaFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaFactura.Designer.cs">
+      <DependentUpon>FBusquedaFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBusquedaInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaInventario.Designer.cs">
+      <DependentUpon>FBusquedaInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBusquedaInv_Suministro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaInv_Suministro.Designer.cs">
+      <DependentUpon>FBusquedaInv_Suministro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBusquedaCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaCargo.Designer.cs">
+      <DependentUpon>FBusquedaCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBusquedaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaCliente.Designer.cs">
+      <DependentUpon>FBusquedaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBusquedaEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaEmpleado.Designer.cs">
+      <DependentUpon>FBusquedaEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBusquedaEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaEmpresa.Designer.cs">
+      <DependentUpon>FBusquedaEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBusquedaHabitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaHabitacion.Designer.cs">
+      <DependentUpon>FBusquedaHabitacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBusquedaReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaReserva.Designer.cs">
+      <DependentUpon>FBusquedaReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FFactura.Designer.cs">
+      <DependentUpon>FFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FLoginInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FLoginInfo.Designer.cs">
+      <DependentUpon>FLoginInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FLoginInfoSegundo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FLoginInfoSegundo.Designer.cs">
+      <DependentUpon>FLoginInfoSegundo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMantenimientoDepartamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMantenimientoDepartamento.Designer.cs">
+      <DependentUpon>FMantenimientoDepartamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMantenimientoEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMantenimientoEmpleado.Designer.cs">
+      <DependentUpon>FMantenimientoEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FLogin.Designer.cs">
+      <DependentUpon>FLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMantenimientoCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMantenimientoCargo.Designer.cs">
+      <DependentUpon>FMantenimientoCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMantenimientoEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMantenimientoEmpresa.Designer.cs">
+      <DependentUpon>FMantenimientoEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMantenimientoHabitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMantenimientoHabitacion.Designer.cs">
+      <DependentUpon>FMantenimientoHabitacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMantenimientoInv_Suministro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMantenimientoInv_Suministro.Designer.cs">
+      <DependentUpon>FMantenimientoInv_Suministro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMantenimientoInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMantenimientoInventario.Designer.cs">
+      <DependentUpon>FMantenimientoInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMantenimientoRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMantenimientoRol.Designer.cs">
+      <DependentUpon>FMantenimientoRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMantenimientoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMantenimientoUsuario.Designer.cs">
+      <DependentUpon>FMantenimientoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMantenimiento_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMantenimiento_Cliente.Designer.cs">
+      <DependentUpon>FMantenimiento_Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMenuMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMenuMantenimiento.Designer.cs">
+      <DependentUpon>FMenuMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FReserva.Designer.cs">
+      <DependentUpon>FReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FBusquedaRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaRol.Designer.cs">
+      <DependentUpon>FBusquedaRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBusquedaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBusquedaUsuario.Designer.cs">
+      <DependentUpon>FBusquedaUsuario.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FBusquedaDepartamento.resx">
+      <DependentUpon>FBusquedaDepartamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBusquedaFactura.resx">
+      <DependentUpon>FBusquedaFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBusquedaInventario.resx">
+      <DependentUpon>FBusquedaInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBusquedaInv_Suministro.resx">
+      <DependentUpon>FBusquedaInv_Suministro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBusquedaCargo.resx">
+      <DependentUpon>FBusquedaCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBusquedaCliente.resx">
+      <DependentUpon>FBusquedaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBusquedaEmpleado.resx">
+      <DependentUpon>FBusquedaEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBusquedaEmpresa.resx">
+      <DependentUpon>FBusquedaEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBusquedaHabitacion.resx">
+      <DependentUpon>FBusquedaHabitacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FFactura.resx">
+      <DependentUpon>FFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FLoginInfo.resx">
+      <DependentUpon>FLoginInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FLoginInfoSegundo.resx">
+      <DependentUpon>FLoginInfoSegundo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMantenimientoDepartamento.resx">
+      <DependentUpon>FMantenimientoDepartamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMantenimientoEmpleado.resx">
+      <DependentUpon>FMantenimientoEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FLogin.resx">
+      <DependentUpon>FLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMantenimientoCargo.resx">
+      <DependentUpon>FMantenimientoCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMantenimientoEmpresa.resx">
+      <DependentUpon>FMantenimientoEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMantenimientoHabitacion.resx">
+      <DependentUpon>FMantenimientoHabitacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMantenimientoInv_Suministro.resx">
+      <DependentUpon>FMantenimientoInv_Suministro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMantenimientoInventario.resx">
+      <DependentUpon>FMantenimientoInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMantenimientoRol.resx">
+      <DependentUpon>FMantenimientoRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMantenimientoUsuario.resx">
+      <DependentUpon>FMantenimientoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMantenimiento_Cliente.resx">
+      <DependentUpon>FMantenimiento_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMenuMantenimiento.resx">
+      <DependentUpon>FMenuMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FReserva.resx">
+      <DependentUpon>FReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="FBusquedaRol.resx">
+      <DependentUpon>FBusquedaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBusquedaUsuario.resx">
+      <DependentUpon>FBusquedaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DBTrivagoDataSet.xsc">
+      <DependentUpon>DBTrivagoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet.xss">
+      <DependentUpon>DBTrivagoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet1.xsc">
+      <DependentUpon>DBTrivagoDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet1.xss">
+      <DependentUpon>DBTrivagoDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet10.xsc">
+      <DependentUpon>DBTrivagoDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet10.xss">
+      <DependentUpon>DBTrivagoDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet11.xsc">
+      <DependentUpon>DBTrivagoDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet11.xss">
+      <DependentUpon>DBTrivagoDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet12.xsc">
+      <DependentUpon>DBTrivagoDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet12.xss">
+      <DependentUpon>DBTrivagoDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet13.xsc">
+      <DependentUpon>DBTrivagoDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet13.xss">
+      <DependentUpon>DBTrivagoDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet14.xsc">
+      <DependentUpon>DBTrivagoDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet14.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet14.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet14.xss">
+      <DependentUpon>DBTrivagoDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet15.xsc">
+      <DependentUpon>DBTrivagoDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet15.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet15.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet15.xss">
+      <DependentUpon>DBTrivagoDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet16.xsc">
+      <DependentUpon>DBTrivagoDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet16.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet16.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet16.xss">
+      <DependentUpon>DBTrivagoDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet2.xsc">
+      <DependentUpon>DBTrivagoDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet2.xss">
+      <DependentUpon>DBTrivagoDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet3.xsc">
+      <DependentUpon>DBTrivagoDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet3.xss">
+      <DependentUpon>DBTrivagoDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet4.xsc">
+      <DependentUpon>DBTrivagoDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet4.xss">
+      <DependentUpon>DBTrivagoDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet5.xsc">
+      <DependentUpon>DBTrivagoDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet5.xss">
+      <DependentUpon>DBTrivagoDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet6.xsc">
+      <DependentUpon>DBTrivagoDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet6.xss">
+      <DependentUpon>DBTrivagoDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet7.xsc">
+      <DependentUpon>DBTrivagoDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet7.xss">
+      <DependentUpon>DBTrivagoDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet8.xsc">
+      <DependentUpon>DBTrivagoDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet8.xss">
+      <DependentUpon>DBTrivagoDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet9.xsc">
+      <DependentUpon>DBTrivagoDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="DBTrivagoDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBTrivagoDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBTrivagoDataSet9.xss">
+      <DependentUpon>DBTrivagoDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+      <Project>{b211f533-b613-4bae-bf21-d395d371fc30}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\png-transparent-computer-icons-customer-service-icon-design-business-business-service-people-monochrome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondos-de-hotel-sdr508awonqxixqe.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Editar-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buscar-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Guardar-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondoLogin.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login Trivago.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OvaloLogin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonLogin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images-removebg-preview %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir %281%293.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ahora.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\primero1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anterior1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\siguiente1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aceptar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ultimo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salirF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imprimirF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\interrogatorio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 184110.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 184544.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 185046.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 185110.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 185129.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 185139.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 185353.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 185430.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 185543.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 185634.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 185735.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 185858.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 190123.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 190208.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 190306.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 190431.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 190827.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 190907.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 191001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-04-22 203955.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar-sesion1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oculto1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boton_factura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reserva3.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
