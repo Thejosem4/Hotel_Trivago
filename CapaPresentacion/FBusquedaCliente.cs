@@ -176,7 +176,6 @@ namespace CapaPresentacion
             }
             else
             {
-                FMantenimiento_Cliente fcliente = new FMantenimiento_Cliente();
                 fcliente.Show();
             }
         }

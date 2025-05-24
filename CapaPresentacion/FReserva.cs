@@ -264,7 +264,7 @@ namespace CapaPresentacion
                 {
                     Program.managersalida = true;
                     MessageBox.Show("Cliente no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    FMantenimiento_Cliente fCliente = new FMantenimiento_Cliente();
+                    FMantenimientoCliente fCliente = new FMantenimientoCliente();
                     this.Hide();
                     fCliente.Show();
                 }

@@ -33,7 +33,7 @@ namespace CapaPresentacion
         // Cliente
         private void button1_Click(object sender, EventArgs e)
         {
-            FMantenimiento_Cliente fCliente = new FMantenimiento_Cliente();
+            FMantenimientoCliente fCliente = new FMantenimientoCliente();
             this.Hide();
             fCliente.Show();
         }
