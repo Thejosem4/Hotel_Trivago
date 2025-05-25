@@ -31,7 +31,7 @@ namespace CapaPresentacion
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -126,7 +126,7 @@ namespace CapaPresentacion
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(34, 295);
+            this.label2.Location = new System.Drawing.Point(35, 333);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 22);
             this.label2.TabIndex = 323;
@@ -138,7 +138,7 @@ namespace CapaPresentacion
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(34, 260);
+            this.label3.Location = new System.Drawing.Point(35, 295);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 22);
             this.label3.TabIndex = 324;
@@ -150,7 +150,7 @@ namespace CapaPresentacion
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(34, 331);
+            this.label4.Location = new System.Drawing.Point(35, 259);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 22);
             this.label4.TabIndex = 325;
@@ -171,7 +171,7 @@ namespace CapaPresentacion
             // txtnombre
             // 
             this.txtnombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombre.Location = new System.Drawing.Point(121, 256);
+            this.txtnombre.Location = new System.Drawing.Point(122, 291);
             this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(256, 30);
@@ -180,16 +180,16 @@ namespace CapaPresentacion
             // txtapellido
             // 
             this.txtapellido.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtapellido.Location = new System.Drawing.Point(121, 295);
+            this.txtapellido.Location = new System.Drawing.Point(124, 328);
             this.txtapellido.Margin = new System.Windows.Forms.Padding(4);
             this.txtapellido.Name = "txtapellido";
-            this.txtapellido.Size = new System.Drawing.Size(256, 30);
+            this.txtapellido.Size = new System.Drawing.Size(253, 30);
             this.txtapellido.TabIndex = 329;
             // 
             // txtcedula
             // 
             this.txtcedula.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcedula.Location = new System.Drawing.Point(122, 331);
+            this.txtcedula.Location = new System.Drawing.Point(122, 256);
             this.txtcedula.Margin = new System.Windows.Forms.Padding(4);
             this.txtcedula.Name = "txtcedula";
             this.txtcedula.Size = new System.Drawing.Size(255, 30);
@@ -231,7 +231,7 @@ namespace CapaPresentacion
             // txtprecio_noche
             // 
             this.txtprecio_noche.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtprecio_noche.Location = new System.Drawing.Point(586, 331);
+            this.txtprecio_noche.Location = new System.Drawing.Point(586, 328);
             this.txtprecio_noche.Margin = new System.Windows.Forms.Padding(4);
             this.txtprecio_noche.Name = "txtprecio_noche";
             this.txtprecio_noche.Size = new System.Drawing.Size(173, 30);
@@ -240,7 +240,7 @@ namespace CapaPresentacion
             // txthabitacion
             // 
             this.txthabitacion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txthabitacion.Location = new System.Drawing.Point(583, 256);
+            this.txthabitacion.Location = new System.Drawing.Point(587, 256);
             this.txthabitacion.Margin = new System.Windows.Forms.Padding(4);
             this.txthabitacion.Name = "txthabitacion";
             this.txthabitacion.Size = new System.Drawing.Size(172, 30);
@@ -264,7 +264,7 @@ namespace CapaPresentacion
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(422, 331);
+            this.label10.Location = new System.Drawing.Point(413, 332);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(158, 22);
             this.label10.TabIndex = 335;
@@ -273,7 +273,7 @@ namespace CapaPresentacion
             // txttipo
             // 
             this.txttipo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttipo.Location = new System.Drawing.Point(586, 295);
+            this.txttipo.Location = new System.Drawing.Point(586, 292);
             this.txttipo.Margin = new System.Windows.Forms.Padding(4);
             this.txttipo.Name = "txttipo";
             this.txttipo.Size = new System.Drawing.Size(173, 30);
@@ -435,21 +435,20 @@ namespace CapaPresentacion
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(22, 426);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(765, 101);
             this.dataGridView1.TabIndex = 361;
-            this.dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
             // tbFacturaDetBindingSource
             // 

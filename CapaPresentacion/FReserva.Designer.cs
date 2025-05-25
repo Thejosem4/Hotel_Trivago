@@ -178,17 +178,17 @@
             // txtcedula
             // 
             this.txtcedula.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcedula.Location = new System.Drawing.Point(116, 411);
+            this.txtcedula.Location = new System.Drawing.Point(115, 334);
             this.txtcedula.Margin = new System.Windows.Forms.Padding(4);
             this.txtcedula.Name = "txtcedula";
-            this.txtcedula.Size = new System.Drawing.Size(255, 30);
+            this.txtcedula.Size = new System.Drawing.Size(256, 30);
             this.txtcedula.TabIndex = 387;
             this.txtcedula.TextChanged += new System.EventHandler(this.txtcedula_TextChanged);
             // 
             // txtapellido
             // 
             this.txtapellido.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtapellido.Location = new System.Drawing.Point(115, 375);
+            this.txtapellido.Location = new System.Drawing.Point(115, 407);
             this.txtapellido.Margin = new System.Windows.Forms.Padding(4);
             this.txtapellido.Name = "txtapellido";
             this.txtapellido.Size = new System.Drawing.Size(256, 30);
@@ -197,7 +197,7 @@
             // txtnombre
             // 
             this.txtnombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombre.Location = new System.Drawing.Point(115, 336);
+            this.txtnombre.Location = new System.Drawing.Point(115, 370);
             this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(256, 30);
@@ -221,7 +221,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(28, 411);
+            this.label4.Location = new System.Drawing.Point(28, 336);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 22);
             this.label4.TabIndex = 383;
@@ -233,7 +233,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(28, 340);
+            this.label3.Location = new System.Drawing.Point(28, 373);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 22);
             this.label3.TabIndex = 382;
@@ -245,7 +245,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label8.Location = new System.Drawing.Point(28, 375);
+            this.label8.Location = new System.Drawing.Point(27, 410);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(81, 22);
             this.label8.TabIndex = 381;

@@ -17,6 +17,7 @@ namespace CapaPresentacion
         public static bool managersalida = false;
         public static int controlmov = 0;
         public static bool YaInicializado = false;
+        public static string cedulaCliente = string.Empty;
 
         // Variables para almacenar IDs de diferentes entidades
         public static string parametro = "1";
