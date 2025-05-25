@@ -218,21 +218,14 @@ namespace CapaPresentacion
             try
             {
                 string cedula = txtcedula.Text.Trim();
-                if (txtnombre.Text == string.Empty)
-                {
-                    MessageBox.Show("Ingrese el nombre del cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (txtapellido.Text == string.Empty)
-                {
-                    MessageBox.Show("Ingrese el apellido del cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (txtcedula.Text == string.Empty)
+
+                if (string.IsNullOrEmpty(cedula))
                 {
                     MessageBox.Show("Ingrese la cédula del cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtcedula.Focus();
                     return;
                 }
+
                 // Validar la cédula
                 if (!ValidarCedula(cedula))
                 {
@@ -243,35 +236,96 @@ namespace CapaPresentacion
                 }
 
                 CNCliente objCliente = new CNCliente();
-                DataTable dt = objCliente.ClienteConsultar(txtcedula.Text);
+                DataTable dt = objCliente.ClienteConsultar(cedula);
+
                 if (dt.Rows.Count > 0)
                 {
-                    // Obtener datos del primer cliente
+                    // Cliente encontrado - cargar datos
                     DataRow fila = dt.Rows[0];
-                    // Mostrar los datos en los controles
                     id_cliente = (int)fila["id_cliente"];
                     txtnombre.Text = fila["nombre_cliente"].ToString();
                     txtapellido.Text = fila["apellido_cliente"].ToString();
                     txtcedula.Text = fila["cedula_cliente"].ToString();
-                    // Llamamos el metodo de bloquear los controles del cliente
+
                     BloquearCliente(true);
-                    // Cambiamos el valor del Program.managersalida
-                    Program.managersalida = false;
-                    // Mostramos que fue guardado con Exito
-                    MessageBox.Show("Cliente Guardada con Éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cliente encontrado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    Program.managersalida = true;
-                    MessageBox.Show("Cliente no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    FMantenimientoCliente fCliente = new FMantenimientoCliente();
-                    this.Hide();
-                    fCliente.Show();
+                    // Cliente no encontrado - ofrecer crear nuevo
+                    DialogResult resultado = MessageBox.Show(
+                        "Cliente no encontrado. ¿Desea crear un nuevo cliente con esta cédula?",
+                        "Cliente no encontrado",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (resultado == DialogResult.Yes)
+                    {
+                        // Configurar variables para el formulario de mantenimiento
+                        Program.managersalida = true;
+                        Program.cedulaCliente = cedula;
+                        Program.controlmov = 0;
+
+                        FMantenimientoCliente fCliente = new FMantenimientoCliente();
+
+                        this.Hide();
+                        fCliente.ShowDialog();
+                        this.Show();
+
+                        // Verificar si se creó el cliente exitosamente
+                        if (Program.managersalida == false && Program.controlmov == 1)
+                        {
+                            // Cliente fue creado exitosamente, usar el ID retornado
+                            if (Program.vidcliente > 0)
+                            {
+                                string vid_cliente = Convert.ToString(Program.vidcliente);
+
+                                // Cargar el cliente recién creado usando su ID
+                                DataTable dtNuevo = objCliente.ClienteConsultar(vid_cliente);
+
+                                if (dtNuevo.Rows.Count > 0)
+                                {
+                                    DataRow filaNueva = dtNuevo.Rows[0];
+                                    id_cliente = (int)filaNueva["id_cliente"];
+                                    txtnombre.Text = filaNueva["nombre_cliente"].ToString();
+                                    txtapellido.Text = filaNueva["apellido_cliente"].ToString();
+                                    txtcedula.Text = filaNueva["cedula_cliente"].ToString();
+
+                                    BloquearCliente(true);
+                                    MessageBox.Show("Cliente creado y cargado con éxito", "Éxito",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                // Fallback: intentar cargar por cédula
+                                DataTable dtFallback = objCliente.ClienteConsultar(cedula);
+                                if (dtFallback.Rows.Count > 0)
+                                {
+                                    DataRow filaFallback = dtFallback.Rows[0];
+                                    id_cliente = (int)filaFallback["id_cliente"];
+                                    txtnombre.Text = filaFallback["nombre_cliente"].ToString();
+                                    txtapellido.Text = filaFallback["apellido_cliente"].ToString();
+                                    txtcedula.Text = filaFallback["cedula_cliente"].ToString();
+
+                                    BloquearCliente(true);
+                                    MessageBox.Show("Cliente creado y cargado con éxito", "Éxito",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                        }
+
+                        // Resetear variables globales
+                        Program.managersalida = false;
+                        Program.controlmov = 0;
+                        Program.vidcliente = 0;
+                    }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error inesperado al cargar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error inesperado al buscar el cliente: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -284,24 +338,15 @@ namespace CapaPresentacion
             BloquearCliente(false);
         }
 
-        //Botones del Busqueda de Habitacion
+        // Botones Habitacion
         private void btnhabitacion_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txthabitacion.Text == string.Empty)
+                if (string.IsNullOrEmpty(txthabitacion.Text.Trim()))
                 {
-                    MessageBox.Show("Ingrese el Codigo de la Habitación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (txtprecio_noche.Text == string.Empty)
-                {
-                    MessageBox.Show("Ingrese el Precio de la Habitación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (txttipo.Text == string.Empty)
-                {
-                    MessageBox.Show("Ingrese el Tipo de Habitación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Ingrese el ID de la habitación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txthabitacion.Focus();
                     return;
                 }
 
@@ -310,29 +355,23 @@ namespace CapaPresentacion
                 if (dt.Rows.Count > 0)
                 {
                     DataRow fila = dt.Rows[0];
-                    // Mostrar los datos en los controles
+                    id_habitacion = Convert.ToInt32(fila["id_habitacion"]);
                     txthabitacion.Text = fila["id_habitacion"].ToString();
                     txtprecio_noche.Text = fila["precio"].ToString();
                     txttipo.Text = fila["tipo_habitacion"].ToString();
-                    // Llamamos el metodo de bloquear los controles del Habitacion
+
                     BloquearHabitacion(true);
-                    // Cambiamos el valor del Program.managersalida
-                    Program.managersalida = false;
-                    // Mostramos que fue guardado con Exito
-                    MessageBox.Show("Habitación Guardada con Éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Habitación encontrada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    Program.managersalida = true;
                     MessageBox.Show("Habitación no encontrada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    FMantenimientoHabitacion fHabitacion = new FMantenimientoHabitacion();
-                    this.Hide();
-                    fHabitacion.Show();
+                    txthabitacion.Focus();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error inesperado al cargar la habitación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error inesperado al buscar la habitación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -342,7 +381,7 @@ namespace CapaPresentacion
             txthabitacion.Text = string.Empty;
             txtprecio_noche.Text = string.Empty;
             txttipo.Text = string.Empty;
-            BloquearHabitacion(true);
+            BloquearHabitacion(false);
         }
 
         // Botones del Empleado
