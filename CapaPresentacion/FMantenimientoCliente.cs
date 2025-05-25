@@ -33,12 +33,44 @@ namespace CapaPresentacion
 
         private void FMantenimiento_Cliente_Load(object sender, EventArgs e)
         {
-            // Cargar el primer cliente
-            CargarDatos();
+            try
+            {
+                // Si venimos desde la factura con una cédula específica
+                if (Program.managersalida == true && !string.IsNullOrEmpty(Program.cedulaCliente))
+                {
+                    // Configurar para nuevo cliente con la cédula predefinida
+                    BloquearControles(false);
+                    txtcodigo.ReadOnly = true;
+                    txtcodigo.Text = "";
+                    txtnombre.Text = "";
+                    txtapellido.Text = "";
+                    txttelefono.Text = "";
+                    txtemail.Text = "";
+                    txtdireccion.Text = "";
+                    txtcedula.Text = Program.cedulaCliente; // Precargar la cédula
+                    dateTimePicker1.Value = DateTime.Now;
 
-            // Bloquear controles inicialmente
-            BloquearControles(true);
+                    // Enfocar el campo nombre para que el usuario pueda empezar a llenar
+                    txtnombre.Focus();
+                }
+                else
+                {
+                    // Comportamiento normal - cargar datos existentes
+                    CargarDatos();
+                    BloquearControles(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el formulario: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // En caso de error, configurar modo de nuevo cliente
+                BloquearControles(false);
+                txtcodigo.ReadOnly = true;
+            }
         }
+
         private void CargarDatos()
         {
             try
@@ -250,6 +282,23 @@ namespace CapaPresentacion
                 string cedula = txtcedula.Text.Trim();
                 string telefono = txttelefono.Text.Trim();
 
+                // Validaciones básicas de campos obligatorios
+                if (string.IsNullOrEmpty(txtnombre.Text.Trim()))
+                {
+                    MessageBox.Show("El nombre del cliente es obligatorio", "Error de validación",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtnombre.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(txtapellido.Text.Trim()))
+                {
+                    MessageBox.Show("El apellido del cliente es obligatorio", "Error de validación",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtapellido.Focus();
+                    return;
+                }
+
                 // Validar la cédula
                 if (!ValidarCedula(cedula))
                 {
@@ -259,8 +308,8 @@ namespace CapaPresentacion
                     return;
                 }
 
-                // Validar el teléfono
-                if (!ValidarTelefono(telefono))
+                // Validar el teléfono si no está vacío
+                if (!string.IsNullOrEmpty(telefono) && !ValidarTelefono(telefono))
                 {
                     MessageBox.Show("El teléfono debe tener el formato 000-000-0000",
                         "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -270,58 +319,76 @@ namespace CapaPresentacion
 
                 DateTime fechaRegistro = dateTimePicker1.Value;
 
-                // Si el ID de usuario no está vacío, entonces estamos actualizando
+                // Si el ID de cliente no está vacío, entonces estamos actualizando
                 if (!string.IsNullOrEmpty(txtcodigo.Text))
                 {
-
                     id_cliente = Convert.ToInt32(txtcodigo.Text);
 
                     string actualizar = CNCliente.ClienteActualizar(
                         id_cliente,
-                        txtnombre.Text,
-                        txtapellido.Text,
-                        txttelefono.Text,
-                        txtemail.Text,
-                        txtdireccion.Text,
-                        txtcedula.Text,
+                        txtnombre.Text.Trim(),
+                        txtapellido.Text.Trim(),
+                        txttelefono.Text.Trim(),
+                        txtemail.Text.Trim(),
+                        txtdireccion.Text.Trim(),
+                        txtcedula.Text.Trim(),
                         fechaRegistro
                     );
 
-                    // Mostrar resultado
-                    MessageBox.Show(actualizar);
-
+                    MessageBox.Show(actualizar, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BloquearControles(true);
                 }
-
-                // Si el ID de usuario está vacío, entonces estamos insertando
+                // Si el ID de cliente está vacío, entonces estamos insertando
                 else
                 {
+                    // Verificar si la cédula ya existe antes de insertar
+                    CNCliente objClienteValidacion = new CNCliente();
+                    DataTable dtExistente = objClienteValidacion.ClienteConsultar(cedula);
+
+                    if (dtExistente.Rows.Count > 0)
+                    {
+                        MessageBox.Show("Ya existe un cliente con esta cédula", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtcedula.Focus();
+                        return;
+                    }
+
                     int nuevo_id;
                     string mantenimiento = CNCliente.ClienteInsertar(
-                        txtnombre.Text,
-                        txtapellido.Text,
-                        txttelefono.Text,
-                        txtemail.Text,
-                        txtdireccion.Text,
-                        txtcedula.Text,
+                        txtnombre.Text.Trim(),
+                        txtapellido.Text.Trim(),
+                        txttelefono.Text.Trim(),
+                        txtemail.Text.Trim(),
+                        txtdireccion.Text.Trim(),
+                        txtcedula.Text.Trim(),
                         fechaRegistro,
                         out nuevo_id
                     );
+
                     txtcodigo.Text = Convert.ToString(nuevo_id);
-                    // Mostrar resultado
-                    MessageBox.Show(mantenimiento);
+                    MessageBox.Show(mantenimiento, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Si venimos desde la factura (managersalida == true), configurar variables de retorno
                     if (Program.managersalida == true)
                     {
                         Program.vidcliente = nuevo_id;
                         Program.controlmov = 1;
-                        this.Close();
-                    }
-                }
+                        Program.managersalida = false; // Indicar que el cliente fue creado exitosamente
 
-                BloquearControles(true);
+                        MessageBox.Show("Cliente creado exitosamente. Regresando a la factura...",
+                            "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        this.Close();
+                        return;
+                    }
+
+                    BloquearControles(true);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al guardar el cliente: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -374,35 +441,42 @@ namespace CapaPresentacion
         {
             if (caso == 1)
             {
-                // Si el caso es 1, no se muestra el mensaje de advertencia
+                // Si el caso es 1 (viene de búsqueda), permitir cierre sin confirmación
+                e.Cancel = false;
             }
             else
             {
                 if (Program.managersalida == true)
                 {
-                    // Asegurarse de que el formulario se cierre (no cancelar el cierre)
+                    // Venimos desde factura, permitir cierre y retornar
                     e.Cancel = false;
 
-                    // Mostrar mensaje informativo
-                    MessageBox.Show("Volviendo a la Factura...",
-                                   "Mensaje de Hotel Trivago",
-                                   MessageBoxButtons.OK,
-                                   MessageBoxIcon.Information);
-
-                        FFactura ffactura = new FFactura();
-                        ffactura.Show();
+                    // Solo mostrar mensaje si no se creó un cliente exitosamente
+                    if (Program.controlmov != 1)
+                    {
+                        MessageBox.Show("Operación cancelada. Regresando a la factura...",
+                                       "Información",
+                                       MessageBoxButtons.OK,
+                                       MessageBoxIcon.Information);
+                    }
                 }
-                else {
-                    if (MessageBox.Show("Esto le hará volver al Menu Principal!\n¿Seguro que desea hacerlo ? ",
-                        "Mensaje de Hotel Trivago", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                else
+                {
+                    // Comportamiento normal - confirmación para volver al menú principal
+                    if (MessageBox.Show("Esto le hará volver al Menú Principal!\n¿Seguro que desea hacerlo?",
+                        "Mensaje de Hotel Trivago",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                    {
                         e.Cancel = false;
+                    }
                     else
                     {
                         e.Cancel = true;
-                    } 
+                    }
                 }
             }
         }
     }
 }
-// Hi

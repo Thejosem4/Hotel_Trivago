@@ -420,6 +420,7 @@ namespace CapaPresentacion
         }
 
         // Botones del Busqueda de cliente
+        // Botones del Busqueda de cliente
         private void btncliente_Click(object sender, EventArgs e)
         {
             try
@@ -444,6 +445,7 @@ namespace CapaPresentacion
 
                 CNCliente objCliente = new CNCliente();
                 DataTable dt = objCliente.ClienteConsultar(txtcedula.Text);
+
                 if (dt.Rows.Count > 0)
                 {
                     // Cliente encontrado - cargar datos
@@ -454,7 +456,6 @@ namespace CapaPresentacion
                     txtcedula.Text = fila["cedula_cliente"].ToString();
 
                     BloquearCliente(true);
-                    Program.managersalida = false;
                     MessageBox.Show("Cliente encontrado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -468,37 +469,72 @@ namespace CapaPresentacion
 
                     if (resultado == DialogResult.Yes)
                     {
-                        // Pasar la cédula al formulario de mantenimiento
+                        // Configurar variables para el formulario de mantenimiento
                         Program.managersalida = true;
                         Program.cedulaCliente = cedula; // Variable global para pasar la cédula
+                        Program.controlmov = 0; // Resetear control
 
                         FMantenimientoCliente fCliente = new FMantenimientoCliente();
+
+                        // Ocultar el formulario actual y mostrar el de mantenimiento
                         this.Hide();
                         fCliente.ShowDialog();
                         this.Show();
 
-                        // Verificar si se creó el cliente y recargarlo
-                        if (!Program.managersalida)
+                        // Verificar si se creó el cliente exitosamente
+                        if (Program.managersalida == false && Program.controlmov == 1)
                         {
-                            // Cliente fue creado, intentar cargarlo nuevamente
-                            DataTable dtNuevo = objCliente.ClienteConsultar(cedula);
-                            if (dtNuevo.Rows.Count > 0)
+                            // Cliente fue creado exitosamente, usar el ID retornado
+                            if (Program.vidcliente > 0)
                             {
-                                DataRow filaNueva = dtNuevo.Rows[0];
-                                id_cliente = (int)filaNueva["id_cliente"];
-                                txtnombre.Text = filaNueva["nombre_cliente"].ToString();
-                                txtapellido.Text = filaNueva["apellido_cliente"].ToString();
+                                string vid_cliente = Convert.ToString(Program.vidcliente);
 
-                                BloquearCliente(true);
-                                MessageBox.Show("Cliente creado y cargado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // Cargar el cliente recién creado usando su ID
+                                DataTable dtNuevo = objCliente.ClienteConsultar(vid_cliente);
+
+                                if (dtNuevo.Rows.Count > 0)
+                                {
+                                    DataRow filaNueva = dtNuevo.Rows[0];
+                                    id_cliente = (int)filaNueva["id_cliente"];
+                                    txtnombre.Text = filaNueva["nombre_cliente"].ToString();
+                                    txtapellido.Text = filaNueva["apellido_cliente"].ToString();
+                                    txtcedula.Text = filaNueva["cedula_cliente"].ToString();
+
+                                    BloquearCliente(true);
+                                    MessageBox.Show("Cliente creado y cargado con éxito", "Éxito",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                // Fallback: intentar cargar por cédula
+                                DataTable dtFallback = objCliente.ClienteConsultar(cedula);
+                                if (dtFallback.Rows.Count > 0)
+                                {
+                                    DataRow filaFallback = dtFallback.Rows[0];
+                                    id_cliente = (int)filaFallback["id_cliente"];
+                                    txtnombre.Text = filaFallback["nombre_cliente"].ToString();
+                                    txtapellido.Text = filaFallback["apellido_cliente"].ToString();
+                                    txtcedula.Text = filaFallback["cedula_cliente"].ToString();
+
+                                    BloquearCliente(true);
+                                    MessageBox.Show("Cliente creado y cargado con éxito", "Éxito",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                             }
                         }
+
+                        // Resetear variables globales
+                        Program.managersalida = false;
+                        Program.controlmov = 0;
+                        Program.vidcliente = 0;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error inesperado al buscar el cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error inesperado al buscar el cliente: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
