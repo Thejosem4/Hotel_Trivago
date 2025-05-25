@@ -136,12 +136,6 @@ namespace CapaPresentacion
                     txtcodigo.Text = Convert.ToString(nuevo_id);
                     // Mostrar resultado
                     MessageBox.Show(mantenimiento);
-                    if (Program.managersalida == true)
-                    {
-                        Program.vidhabitacion = nuevo_id;
-                        Program.controlmov = 2;
-                        this.Close();
-                    }
                 }
 
                 BloquearControles(true);
@@ -203,32 +197,14 @@ namespace CapaPresentacion
             }
             else
             {
-                if (Program.managersalida == true)
+                if (MessageBox.Show("Esto le hará volver al Menu Principal!\n¿Seguro que desea hacerlo ? ",
+                    "Mensaje de Hotel Trivago", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 {
-                    // Asegurarse de que el formulario se cierre (no cancelar el cierre)
                     e.Cancel = false;
-
-                    // Mostrar mensaje informativo
-                    MessageBox.Show("Volviendo a la Factura...",
-                                   "Mensaje de Hotel Trivago",
-                                   MessageBoxButtons.OK,
-                                   MessageBoxIcon.Information);
-
-                    FFactura ffactura = new FFactura();
-                    ffactura.Show();
                 }
                 else
                 {
-                    if (MessageBox.Show("Esto le hará volver al Menu Principal!\n¿Seguro que desea hacerlo ? ",
-                        "Mensaje de Hotel Trivago", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                    {
-                        e.Cancel = false;
-                    }
-
-                    else
-                    {
-                        e.Cancel = true;
-                    }
+                    e.Cancel = true;
                 }
             }
         }

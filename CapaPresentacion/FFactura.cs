@@ -55,13 +55,6 @@ namespace CapaPresentacion
                 BloquearCliente(true);
                 combo.Enabled = true;
             }
-            else if (Program.controlmov == 2)
-            {
-                CargarHabitacion();
-                BloquearControles(false);
-                BloquearHabitacion(true);
-                combo.Enabled = true;
-            }
             txtsubtotal.ReadOnly = true;
             txttotal.ReadOnly = true;
             txtdescuento.Text = "0";

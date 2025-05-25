@@ -394,16 +394,6 @@ namespace CapaPresentacion
                     MessageBox.Show("Ingrese el Codigo del Empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (txtnombre_empleado.Text == string.Empty)
-                {
-                    MessageBox.Show("Ingrese el Nombre del Empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (txtapellido_empleado.Text == string.Empty)
-                {
-                    MessageBox.Show("Ingrese el Apellido del Empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
                 CNEmpleado objEmpleado = new CNEmpleado();
                 DataTable dt = objEmpleado.EmpleadoConsultar(txtempleado.Text);
@@ -442,11 +432,12 @@ namespace CapaPresentacion
         // Botones Principales
         private void button1_Click(object sender, EventArgs e)
         {
-            BloquearControles(false);
             // Control Bloqueo
+            BloquearControles(false);
             txtreserva.Enabled = false;
             txtimporte.Enabled = false;
             combo.Enabled = true;
+
             // Limpiar los campos
             txtreserva.Text = string.Empty;
             txthabitacion.Text = string.Empty;
