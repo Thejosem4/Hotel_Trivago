@@ -198,7 +198,7 @@ namespace CapaPresentacion
         }
 
         // Evento FormClosing
-        private void FBusqueraReserva_FormClosing(object sender, FormClosingEventArgs e)
+        private void FBusquedaReserva_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (caso == false)
             {
@@ -206,11 +206,8 @@ namespace CapaPresentacion
                     "Mensaje de Hotel Trivago", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 {
                     e.Cancel = false;
-
-                    // Aquí abriría el formulario de menú principal
-                    // Ejemplo: FMenuMantenimiento fmenu = new FMenuMantenimiento();
-                    // fmenu.Show();
                 }
+
                 else
                 {
                     e.Cancel = true;
@@ -218,9 +215,8 @@ namespace CapaPresentacion
             }
             else
             {
-                // Abrir el formulario de mantenimiento de reservas
-                // Ejemplo: FMantenimientoReserva freserva = new FMantenimientoReserva();
-                // freserva.Show();
+                FReserva freserva = new FReserva();
+                freserva.Show();
             }
         }
     }

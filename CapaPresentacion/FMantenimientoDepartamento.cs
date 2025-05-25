@@ -229,9 +229,6 @@ namespace CapaPresentacion
                     "Mensaje de Hotel Trivago", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 {
                     e.Cancel = false;
-
-                    FMenuMantenimiento fmenu = new FMenuMantenimiento();
-                    fmenu.Show();
                 }
 
                 else

@@ -395,13 +395,7 @@ namespace CapaPresentacion
                 else {
                     if (MessageBox.Show("Esto le hará volver al Menu Principal!\n¿Seguro que desea hacerlo ? ",
                         "Mensaje de Hotel Trivago", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                    {
                         e.Cancel = false;
-
-                        FMenuMantenimiento fmenu = new FMenuMantenimiento();
-                        fmenu.Show();
-                    }
-
                     else
                     {
                         e.Cancel = true;

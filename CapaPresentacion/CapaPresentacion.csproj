@@ -364,6 +364,9 @@
     <EmbeddedResource Include="FBusquedaHabitacion.resx">
       <DependentUpon>FBusquedaHabitacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FBusquedaReserva.resx">
+      <DependentUpon>FBusquedaReserva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FFactura.resx">
       <DependentUpon>FFactura.cs</DependentUpon>
     </EmbeddedResource>

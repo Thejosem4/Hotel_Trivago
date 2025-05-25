@@ -36,9 +36,7 @@ namespace CapaPresentacion
             }
             else
             {
-                FMenuMantenimiento menu = new FMenuMantenimiento();
-                this.Hide();
-                menu.ShowDialog();
+                this.Close();
             }
         }
 
