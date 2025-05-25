@@ -1,4 +1,6 @@
-﻿namespace CapaPresentacion
+﻿using System;
+
+namespace CapaPresentacion
 {
     partial class FMenuMantenimiento
     {
@@ -13,12 +15,26 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing)
             {
-                components.Dispose();
+                // Cerrar formularios abiertos cuando se dispose este formulario
+                try
+                {
+                    CerrarTodosLosFormularios();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error cerrando formularios en Dispose: {ex.Message}");
+                }
+
+                if (components != null)
+                {
+                    components.Dispose();
+                }
             }
             base.Dispose(disposing);
         }
+
 
         #region Windows Form Designer generated code
 

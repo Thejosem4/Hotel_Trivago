@@ -12,11 +12,13 @@ namespace CapaPresentacion
 {
     internal static class Program
     {
+        // Variables globales para el control de la aplicación
         public static bool managerinfo = false;
         public static bool managersalida = false;
         public static int controlmov = 0;
         public static bool YaInicializado = false;
 
+        // Variables para almacenar IDs de diferentes entidades
         public static string parametro = "1";
         public static int vidcliente = 0;
         public static int vidempleado = 0;
@@ -40,40 +42,72 @@ namespace CapaPresentacion
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // Configurar manejo de excepciones no controladas
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            Application.ThreadException += Application_ThreadException;
+
+            // Inicializar con el formulario de login
             Form nextForm = new FLogin();
 
+            // Bucle principal de la aplicación
             while (nextForm != null)
             {
                 nextForm = RunForm(nextForm);
             }
         }
 
+        /// <summary>
+        /// Ejecuta un formulario y determina qué formulario debe ejecutarse después
+        /// </summary>
+        /// <param name="currentForm">El formulario actual a ejecutar</param>
+        /// <returns>El próximo formulario a ejecutar, o null para finalizar</returns>
         private static Form RunForm(Form currentForm)
         {
             if (currentForm is FLogin)
             {
-                var loginForm = new FLogin();
-                loginForm.ShowDialog();
-
-                if (loginForm.LoginExitoso)
+                // Usar using para garantizar la disposición correcta del formulario de login
+                using (var loginForm = new FLogin())
                 {
-                    FMenuMantenimiento formPrincipal = new FMenuMantenimiento();
+                    loginForm.ShowDialog();
 
-                    if (!YaInicializado)
+                    // Si el login fue exitoso, mostrar el menú principal
+                    if (loginForm.LoginExitoso)
                     {
-                        YaInicializado = true;
-                        Application.Run(formPrincipal);
-                    }
-                    else
-                    {
-                        formPrincipal.ShowDialog();
-                    }
+                        // Usar using también para el menú principal
+                        using (var formPrincipal = new FMenuMantenimiento())
+                        {
+                            if (!YaInicializado)
+                            {
+                                // Primera vez que se ejecuta la aplicación
+                                YaInicializado = true;
+                                Application.Run(formPrincipal);
+                            }
+                            else
+                            {
+                                // Ejecuciones subsecuentes
+                                formPrincipal.ShowDialog();
+                            }
+                        }
 
-                    return new FLogin(); // Volver al login después de cerrar el principal
+                        // Después de cerrar el menú principal, volver al login
+                        return new FLogin();
+                    }
                 }
             }
 
-            return null; // Finaliza si el login no fue exitoso
+            // Si llegamos aquí, significa que el login no fue exitoso o se cerró la aplicación
+            return null;
+        }
+
+        /// <summary>
+        /// Maneja las excepciones no controladas de la aplicación
+        /// </summary>
+        /// <param name="sender">El objeto que generó la excepción</param>
+        /// <param name="e">Los argumentos de la excepción</param>
+        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            MessageBox.Show("Error inesperado en la aplicación: " + e.Exception.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
