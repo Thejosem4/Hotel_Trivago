@@ -15,6 +15,7 @@ El sistema está desarrollado completamente en C#, con una interfaz gráfica de 
 🎨 Interfaz: Windows Forms (WinForms)
 
 🎯 Funcionalidades implementadas
+
 ✅ Sistema de login con control de acceso
 
 ✅ Registro y gestión de clientes
@@ -25,10 +26,10 @@ El sistema está desarrollado completamente en C#, con una interfaz gráfica de 
 
 ✅ Registro de pagos y generación de facturas básicas
 
-✅ Panel general de administración
 
 🚧 Estado del proyecto
-🧪 Versión: 1.0 (Primer prototipo funcional)
+
+🧪 Versión: Final
 
 Actualmente el sistema está en una etapa inicial pero funcional. Algunas características planeadas para futuras versiones incluyen:
 
@@ -39,4 +40,5 @@ Actualmente el sistema está en una etapa inicial pero funcional. Algunas caract
 📤 Exportación de datos (PDF, Excel)
 
 🧠 Reflexión personal
+
 Este proyecto representa mi primer acercamiento práctico al desarrollo de software completo. A lo largo del proceso, he aprendido mucho sobre la lógica de programación, el trabajo con bases de datos y el diseño de interfaces funcionales. Implementar el sistema de login y conectar la lógica de negocio con la base de datos fue un reto importante que me permitió crecer como programador. Estoy motivado a seguir mejorando este proyecto y continuar aprendiendo.
